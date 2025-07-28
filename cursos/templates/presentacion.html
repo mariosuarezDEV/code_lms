@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<img src="{{ curso.portada.url }}" class="w-100" style="height: 350px; object-fit: cover;" alt="{{ curso.nombre }}">
+<div class="row mt-4">
+    <div class="col">
+        <h2 class="display-4 fw-semibold">{{ curso.nombre }}</h2>
+        <p class="fs-5 text-muted mb-4">{{ curso.descripcion }}</p>
+    </div>
+    <table class="table table-hover table-striped table-bordered text-center align-middle">
+        <thead>
+            <tr>
+                <th>Descripción</th>
+                <th>Información</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Estudiantes Inscritos</td>
+                <td>{{ curso.num_estudiantes }}</td>
+            </tr>
+            <tr>
+                <td>Categoría</td>
+                <td>{{ curso.categoria }}</td>
+            </tr>
+            <tr>
+                <td>Nivel del curso</td>
+                <td>{{ curso.nivel }}</td>
+            </tr>
+            <tr>
+                <td>Precio del curso</td>
+                <td>{{ curso.precio }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row mt-4">
+    <div class="col">
+        {{ curso.presentacion_html }}
+    </div>
+</div>
+{% endblock contenido %}
