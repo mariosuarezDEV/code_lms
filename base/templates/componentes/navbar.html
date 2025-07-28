@@ -24,16 +24,26 @@
             <li><a class="dropdown-item" href="#">Pandas y NumPy</a></li>
             <!-- <li><a class="dropdown-item" href="#">FastAPI</a></li> -->
             <!-- <li><a class="dropdown-item" href="#">PostgreSQL</a></li> -->
-
           </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true"><i class="fa-solid fa-user"></i> Iniciar sesión / Registrarse</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Cursos y Guías" aria-label="Search"/>
-        <button class="btn btn-success" type="submit">Buscar</button>
+        {% if user.is_authenticated %}
+          <div class="btn-group">
+            <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+              <i class="fa-solid fa-circle-user"></i> {{ user.get_full_name|default:user.username }}
+            </button>
+            <ul class="dropdown-menu dropdown-menu-lg-end">
+              <li><button class="dropdown-item" type="button"><i class="fa-solid fa-gear"></i> Configuración</button></li>
+              <li><button class="dropdown-item" type="button"><i class="fa-solid fa-bookmark"></i> Mis Cursos</button></li>
+              <li><button class="dropdown-item" type="button"><i class="fa-solid fa-users"></i> Mis compañeros</button></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a href="{% url 'account_logout' %}" class="dropdown-item" type="button"><i class="fa-solid fa-right-to-bracket"></i> Cerrar sesión</a></li>
+            </ul>
+          </div>
+        {% else %}
+            <a class="btn btn-outline-primary" href="{% url 'account_login' %}"><i class="fa-solid fa-user"></i> Iniciar sesión / Registrarse</a>
+        {% endif %}
       </form>
     </div>
   </div>

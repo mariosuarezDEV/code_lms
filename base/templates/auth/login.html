@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+  <h1>{% if form.is_bound and form.errors %}Por favor corrige los errores{% else %}Formulario{% endif %}</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    {% crispy form %}
+  </form>
+
+  {% if not form.is_bound %}
+    <p>{% if 'login' in form.fields %}¿No tienes cuenta? <a href="{% url 'account_signup' %}">Regístrate aquí</a>{% else %}¿Ya tienes cuenta? <a href="{% url 'account_login' %}">Inicia sesión</a>{% endif %}</p>
+  {% endif %}
+{% endblock contenido %}

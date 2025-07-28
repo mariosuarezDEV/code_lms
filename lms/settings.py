@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
+from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
 
@@ -41,10 +42,17 @@ INSTALLED_APPS = [
     # Apps de terceros
     "django_bootstrap5",
     "djmoney",
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    "crispy_forms",
+    "crispy_bootstrap5",
     # Mis Apps
     "base",
     "landing",
     "cursos",
+    "ofertas",
 ]
 
 MIDDLEWARE = [
@@ -55,6 +63,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "allauth.account.middleware.AccountMiddleware",
 ]
 
 ROOT_URLCONF = "lms.urls"
@@ -62,13 +71,15 @@ ROOT_URLCONF = "lms.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
-                "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -131,3 +142,46 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# AllAuth
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+]
+
+# Registro con Email
+ACCOUNT_LOGIN_METHODS = ['email']
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+ACCOUNT_FORMS = {'login': 'base.forms.LoginForm', }
+
+LOGIN_REDIRECT_URL = 'landing'
+LOGOUT_REDIRECT_URL = 'landing'
+LOGIN_URL = 'account_login'
+ACCOUNT_SIGNUP_URL = 'account_signup'
+
+# Envio de correos electronicos
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'lmcervantessuarez@gmail.com'
+EMAIL_HOST_PASSWORD = 'zjsn tvah gruo cpmd'
+# Configuracion de mensajes
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'secondary',
+    messages.INFO: 'info',
+    messages.SUCCESS: 'success',
+    messages.WARNING: 'warning',
+    messages.ERROR: 'danger',
+}
+
+
+# Formularios con diseño
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
