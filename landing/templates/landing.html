@@ -46,26 +46,44 @@
 
 <div class="row text-center">
   <div class="col-md-4 mb-4">
-    <div class="p-4 shadow-sm rounded-4 h-100">
+    <div class="p-4 card shadow-sm rounded-4 h-100">
       <i class="bi bi-mouse-fill display-3 text-primary mb-3"></i>
       <h4 class="fw-semibold">1. Explora Nuestros Cursos</h4>
       <p class="text-muted">Navega por nuestra plataforma y descubre programas diseñados para impulsar tu crecimiento personal y profesional.</p>
     </div>
   </div>
   <div class="col-md-4 mb-4">
-    <div class="p-4 shadow-sm rounded-4 h-100">
+    <div class="p-4 card shadow-sm rounded-4 h-100">
       <i class="bi bi-play-circle-fill display-3 text-primary mb-3"></i>
       <h4 class="fw-semibold">2. Aprende a tu Propio Ritmo</h4>
       <p class="text-muted">Accede a contenidos interactivos y clases en video desde cualquier lugar y en cualquier momento.</p>
     </div>
   </div>
   <div class="col-md-4 mb-4">
-    <div class="p-4 shadow-sm rounded-4 h-100">
+    <div class="p-4 card shadow-sm rounded-4 h-100">
       <i class="bi bi-patch-check-fill display-3 text-primary mb-3"></i>
       <h4 class="fw-semibold">3. Certifica tus Conocimientos</h4>
       <p class="text-muted">Al finalizar tus cursos, obtén certificados que respaldan tus habilidades y mejoran tu perfil profesional.</p>
     </div>
   </div>
 </div>
+
+<div class="row my-5">
+  <div class="col-12 card text-bg-dark">
+    <div class="card-body text-center py-5">
+      <h2 class="fw-bold mb-3 display-5">¡Acceso Anticipado Exclusivo!</h2>
+      <p class="fs-5 mb-4 text-light">
+        Sé de los primeros en aprovechar nuestra plataforma. Accede antes que nadie y desbloquea ventajas únicas solo para miembros fundadores.
+      </p>
+      <a href="{% url 'lanzamiento' %}" class="btn btn-light px-4 py-2">
+        <i class="fa-solid fa-circle-info"></i> Conoce los beneficios
+      </a>
+      <p class="mt-3 small">
+        Cupo limitado. ¡No dejes pasar esta oportunidad!
+      </p>
+    </div>
+  </div>
+</div>
+
 
 {% endblock contenido %}

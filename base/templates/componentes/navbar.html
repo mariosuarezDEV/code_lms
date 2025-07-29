@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top shadow mb-4" >
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Luis Mario Suárez | Cursos</a>
+    <a class="navbar-brand" href="#">UpTech | LMS</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -9,19 +9,25 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href='{% url "landing" %}'><i class="fa-solid fa-house"></i> Inicio</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href='{% url "landing" %}'><i class="fa-solid fa-tv"></i> Cursos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href='{% url "landing" %}'><i class="fa-solid fa-book"></i> Clases</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-ranking-star"></i> Cursos Destacados
+            <i class="fa-solid fa-ranking-star"></i> Destacados
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Python desde 0</a></li>
-            <li><a class="dropdown-item" href="#">Django Básico</a></li>
+            <li><a class="dropdown-item" href="#">Ofertas para estudiantes</a></li>
+            <li><a class="dropdown-item" href="#">Quiero ser educador</a></li>
             <!-- <li><a class="dropdown-item" href="#">Django Rest Framework</a></li> -->
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Ingeniería en Backend</a></li>
+            <li><a class="dropdown-item" href="#">Conoce más sobre la plataforma</a></li>
             <!-- <li><a class="dropdown-item" href="#">Ingeniería en Inteligencia Artificial</a></li> -->
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Pandas y NumPy</a></li>
+            <li><a class="dropdown-item" href="#">Conoce más sobre la plataforma</a></li>
             <!-- <li><a class="dropdown-item" href="#">FastAPI</a></li> -->
             <!-- <li><a class="dropdown-item" href="#">PostgreSQL</a></li> -->
           </ul>
