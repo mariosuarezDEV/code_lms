@@ -56,6 +56,8 @@ INSTALLED_APPS = [
     "landing",
     "cursos",
     "ofertas",
+    "personal",
+    "clases",
 ]
 
 MIDDLEWARE = [
@@ -121,6 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'personal.CustomUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/

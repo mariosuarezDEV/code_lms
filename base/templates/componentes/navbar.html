@@ -34,7 +34,7 @@
               <i class="fa-solid fa-circle-user"></i> {{ user.get_full_name|default:user.username }}
             </button>
             <ul class="dropdown-menu dropdown-menu-lg-end">
-              <li><button class="dropdown-item" type="button"><i class="fa-solid fa-gear"></i> Configuración</button></li>
+              <li><a href="{% url 'account_profile' %}" class="dropdown-item" type="button"><i class="fa-solid fa-gear"></i> Configuración</a></li>
               <li><button class="dropdown-item" type="button"><i class="fa-solid fa-bookmark"></i> Mis Cursos</button></li>
               <li><button class="dropdown-item" type="button"><i class="fa-solid fa-users"></i> Mis compañeros</button></li>
               <li><hr class="dropdown-divider"></li>

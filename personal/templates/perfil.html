@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+  <div class="row my-4 align-items-center justify-content-center">
+    
+    <!-- Imagen de perfil centrada y redonda -->
+    <div class="col-md-4 text-center mb-4 mb-md-0">
+      {% if user.foto_perfil %}
+        <img src="{{ user.foto_perfil.url }}" 
+             class="img-fluid rounded" 
+             alt="Foto de perfil" 
+             style="max-width: 350px;" />
+      {% else %}
+        <img src="{% static 'imagenes/user.png' %}" 
+             class="img-fluid" 
+             alt="Foto de perfil" 
+             style="max-width: 350px;" />
+      {% endif %}
+    </div>
+    
+    <!-- Nombre del usuario -->
+    <div class="col-md-6 text-center text-md-start">
+        <h2 class="fw-bold display-2 mb-0">{{ user.first_name }}</h2>
+        <h2 class="fw-light display-3 mt-0">{{ user.last_name }}</h2>
+    </div>
+    
+  </div>
+
+{% endblock contenido %}

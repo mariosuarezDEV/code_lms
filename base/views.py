@@ -41,20 +41,3 @@ class AccountCreatedView(TemplateView):
 
 class VerificationView(TemplateView):
     template_name = "auth/verification.html"
-
-# Terminar perfil (nombre y apellido)
-
-
-class CustomProfileView(SignupView):
-    template_name = "auth/profile.html"
-    form_class = SignupForm
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = self.form_class()
-        return context
-
-    def form_valid(self, form):
-        response = super().form_valid(form)
-        # Aquí puedes agregar lógica adicional si es necesario
-        return response
