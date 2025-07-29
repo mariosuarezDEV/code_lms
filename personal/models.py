@@ -1,7 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-from PIL import Image
 import os
+from PIL import Image
 from django.core.files.base import ContentFile
 from io import BytesIO
 
@@ -28,35 +28,31 @@ class CustomUser(AbstractUser):
                 ruta_original), f"{nombre_base}.webp")
 
             try:
-                # Abrir imagen original
                 with Image.open(ruta_original) as img:
-                    # Convertir a RGB si es necesario
+                    # Convertir a RGB si tiene transparencia
                     if img.mode in ("RGBA", "P"):
                         img = img.convert("RGB")
 
-                    # Redimensionar si es muy grande
-                    max_size = (500, 500)
-                    img.thumbnail(max_size)
-
-                    # Guardar imagen en buffer como webp
+                    # Guardar como WebP sin cambiar calidad
                     buffer = BytesIO()
-                    img.save(buffer, format="WEBP", quality=80)
+                    # sin quality = compresión mínima
+                    img.save(buffer, format="WEBP")
                     buffer.seek(0)
 
-                    # Eliminar archivo original
+                    # Eliminar original
                     if os.path.exists(ruta_original):
                         os.remove(ruta_original)
 
-                    # Guardar archivo webp en el campo
+                    # Reemplazar imagen en el campo
                     self.foto_perfil.save(
                         f"{nombre_base}.webp", ContentFile(buffer.read()), save=False)
                     buffer.close()
 
-                    # Guardar el modelo con el nuevo archivo
+                    # Guardar con la nueva imagen
                     super().save(update_fields=["foto_perfil"])
 
             except Exception as e:
-                print(f"Error al procesar imagen WebP: {e}")
+                print(f"Error al convertir imagen a WebP: {e}")
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
