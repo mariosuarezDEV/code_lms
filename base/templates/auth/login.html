@@ -2,14 +2,18 @@
 {% load crispy_forms_tags %}
 
 {% block contenido %}
-  <h1>{% if form.is_bound and form.errors %}Por favor corrige los errores{% else %}Formulario{% endif %}</h1>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+  <div class="card p-4" style="width: 100%; max-width: 400px;">
+    <h3 class="text-center mb-4 fw-semibold">Iniciar sesión</h3>
 
-  <form method="post">
-    {% csrf_token %}
-    {% crispy form %}
-  </form>
-
-  {% if not form.is_bound %}
-    <p>{% if 'login' in form.fields %}¿No tienes cuenta? <a href="{% url 'account_signup' %}">Regístrate aquí</a>{% else %}¿Ya tienes cuenta? <a href="{% url 'account_login' %}">Inicia sesión</a>{% endif %}</p>
-  {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-dark w-100 mt-3"><i class="fa-solid fa-right-to-bracket"></i> Iniciar sesión</button>
+      <div class="text-center mt-3">
+        <a href="{% url 'account_signup' %}">¿No tienes una cuenta? Regístrate</a>
+      </div>
+    </form>
+  </div>
+</div>
 {% endblock contenido %}

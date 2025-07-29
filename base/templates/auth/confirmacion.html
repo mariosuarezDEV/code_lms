@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block contenido %}
+<div class="row justify-content-center align-items-center" >
+    <div class="col-md-6 col-12">
+        <h1 class="display-3 mt-3 mb-0">Llegaste al ultimo paso para verificar tu cuenta.</h1>
+        <h1 class="display-5 my-0 text-primary fw-bold mt-2">Y al primero para transformar tu educación.</h1>
+        <p class="lead fs-4 my-3">Aquí, cada línea de código que escribas te acercará más a dominar las tecnologías que mueven el mundo. ¿Listo para crear, innovar y convertirte en un/a desarrollador/a excepcional?.</p>
+        
+    </div>
+    <div class="col-md-6 col-12">
+        <img src="{% static 'imagenes/portada.jpg' %}" class="img-fluid" alt="Confirmación de cuenta">
+    </div>
+</div>
+{% endblock contenido %}

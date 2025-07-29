@@ -135,6 +135,11 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+# Carpetas donde Django buscará archivos estáticos en desarrollo
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Aquí pondrás tus archivos estáticos
+]
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
@@ -153,7 +158,8 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_LOGIN_METHODS = ['email']
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 
-ACCOUNT_FORMS = {'login': 'base.forms.LoginForm', }
+ACCOUNT_FORMS = {'login': 'base.forms.LoginForm',
+                 'signup': 'base.forms.SignupForm'}
 
 LOGIN_REDIRECT_URL = 'landing'
 LOGOUT_REDIRECT_URL = 'landing'
@@ -162,7 +168,9 @@ ACCOUNT_SIGNUP_URL = 'account_signup'
 
 # Envio de correos electronicos
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # "mandatory" or "optional" or "none"
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECTS = True
+ACCOUNT_EMAIL_CONFIRMATION_REDIRECT_URL = "landing"
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
