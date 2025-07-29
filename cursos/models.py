@@ -3,6 +3,8 @@ from djmoney.models.fields import MoneyField
 from base.models import BaseModel
 import markdown
 from django.utils.safestring import mark_safe
+from django.contrib.auth import get_user_model
+User = get_user_model()
 # Create your models here.
 
 NIVELES = [
@@ -59,3 +61,21 @@ class CursosModel(BaseModel):
 
     def __str__(self):
         return f'{self.nombre} - {self.categoria.nombre}'
+
+
+class AlumnosInscritosModel(BaseModel):
+    alumno = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="%(class)s_usuario",
+        verbose_name="Usuario del alumno", help_text="Usuario asociado al alumno")
+    curso = models.ForeignKey(
+        CursosModel, on_delete=models.CASCADE, related_name="%(class)s_curso",
+        verbose_name="Curso del alumno", help_text="Curso al que está inscrito el alumno")
+    fecha_inscripcion = models.DateTimeField(
+        auto_now_add=True, verbose_name="Fecha de inscripción", help_text="Fecha en que el alumno se inscribió al curso")
+
+    class Meta:
+        verbose_name = "Alumno Inscrito"
+        verbose_name_plural = "Alumnos Inscritos"
+        managed = True
+        # Asegura que un alumno no pueda inscribirse al mismo curso más de una vez
+        unique_together = ('alumno', 'curso')

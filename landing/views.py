@@ -14,9 +14,3 @@ class LandingPageView(TemplateView):
 
 class PresalePageView(TemplateView):
     template_name = "lanzamiento.html"
-
-    # Si el usuario está autenticado, redirigir a la página de cursos
-    def dispatch(self, request, *args, **kwargs):
-        if request.user.is_authenticated:
-            return redirect('landing')
-        return super().dispatch(request, *args, **kwargs)
