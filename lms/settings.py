@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "ofertas",
     "personal",
     "clases",
+    "pagos",
 ]
 
 MIDDLEWARE = [
