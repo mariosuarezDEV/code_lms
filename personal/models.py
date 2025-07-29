@@ -20,7 +20,7 @@ class CustomUser(AbstractUser):
             try:
                 with Image.open(ruta) as img:
                     # Redimensionar si es muy grande (opcional)
-                    max_size = (500, 500)
+                    max_size = (460, 460)
                     img.thumbnail(max_size)
 
                     # Convertir a RGB (necesario si suben PNG con transparencia)
