@@ -26,9 +26,19 @@ class LoginForm(AllauthLoginForm):
 class SignupForm(AllauthSignupForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        # Instancia del helper de crispy
         self.helper = FormHelper()
-        self.helper.form_method = "post"
-        self.helper.add_input(
-            Submit('submit', 'Registrarse', css_class='btn btn-success'))
-        for field_name, field in self.fields.items():
-            field.widget.attrs.update({'class': 'form-control'})
+        self.helper.form_method = 'post'
+
+        # Diseño personalizado del formulario
+        self.helper.layout = Layout(
+            Field('email', css_class='form-control',
+                  placeholder='Correo electrónico'),
+            Field('password1', css_class='form-control',
+                  placeholder='Contraseña'),
+            Field('password2', css_class='form-control',
+                  placeholder='Confirmar contraseña'),
+            Submit('submit', 'Registrarse',
+                   css_class='btn btn-primary w-100 mt-3')
+        )

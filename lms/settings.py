@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-!j=m1$8(&s*ud30$x*5gw75malqymx9=!q1d@f6-1c&u!-!d%)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -177,12 +180,13 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECTS = True
 ACCOUNT_EMAIL_CONFIRMATION_REDIRECT_URL = "landing"
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_BACKEND = os.getenv(
+    'EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', 587))
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'lmcervantessuarez@gmail.com'
-EMAIL_HOST_PASSWORD = 'zjsn tvah gruo cpmd'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 # Configuracion de mensajes
 
 MESSAGE_TAGS = {
