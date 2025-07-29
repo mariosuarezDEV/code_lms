@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     "crispy_forms",
     "crispy_bootstrap5",
+    "djstripe",
     # Mis Apps
     "base",
     "landing",
@@ -178,7 +179,6 @@ LOGIN_URL = 'account_login'
 ACCOUNT_SIGNUP_URL = 'account_signup'
 
 # Envio de correos electronicos
-ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # "mandatory" or "optional" or "none"
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECTS = True
 ACCOUNT_EMAIL_CONFIRMATION_REDIRECT_URL = "landing"
@@ -205,3 +205,13 @@ MESSAGE_TAGS = {
 # Formularios con diseño
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+
+# Stripe settings
+DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
+STRIPE_LIVE_MODE = False  # Cambiar a True en producción
+
+# Test
+
+
+DJSTRIPE_USE_NATIVE_JSONFIELD = True  # Recomendado para mejores modelos

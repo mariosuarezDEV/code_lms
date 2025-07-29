@@ -26,6 +26,7 @@ urlpatterns = [
     path("cursos/", include("cursos.urls")),
     path("cuenta/", include("base.urls")),
     path("personal/", include("personal.urls")),
+    path("stripe/", include("djstripe.urls", namespace="djstripe")),
     # path('accounts/', include('allauth.urls')),
 ]
 
