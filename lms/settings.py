@@ -210,5 +210,6 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Stripe settings
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
-STRIPE_LIVE_MODE = False  # Cambiar a True en producción
+STRIPE_LIVE_MODE = True  # Cambiar a True en producción
+STRIPE_SECRET_KEY = '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'
 DJSTRIPE_USE_NATIVE_JSONFIELD = True  # Recomendado para mejores modelos
