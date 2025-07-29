@@ -2,8 +2,6 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 import os
 from PIL import Image
-from django.core.files.base import ContentFile
-from io import BytesIO
 
 
 class CustomUser(AbstractUser):
@@ -15,44 +13,25 @@ class CustomUser(AbstractUser):
         blank=True, null=True, verbose_name="Biografia", help_text="Escribe una biografía breve")
 
     def save(self, *args, **kwargs):
-        # Guardar temporalmente la imagen original
-        original = self.foto_perfil
-
         super().save(*args, **kwargs)
 
-        if original:
-            ruta_original = self.foto_perfil.path
-            nombre_original = os.path.basename(ruta_original)
-            nombre_base, _ = os.path.splitext(nombre_original)
-            ruta_webp = os.path.join(os.path.dirname(
-                ruta_original), f"{nombre_base}.webp")
-
+        if self.foto_perfil:
+            ruta = self.foto_perfil.path
             try:
-                with Image.open(ruta_original) as img:
-                    # Convertir a RGB si tiene transparencia
+                with Image.open(ruta) as img:
+                    # Redimensionar si es muy grande (opcional)
+                    max_size = (500, 500)
+                    img.thumbnail(max_size)
+
+                    # Convertir a RGB (necesario si suben PNG con transparencia)
                     if img.mode in ("RGBA", "P"):
                         img = img.convert("RGB")
 
-                    # Guardar como WebP sin cambiar calidad
-                    buffer = BytesIO()
-                    # sin quality = compresión mínima
-                    img.save(buffer, format="WEBP")
-                    buffer.seek(0)
-
-                    # Eliminar original
-                    if os.path.exists(ruta_original):
-                        os.remove(ruta_original)
-
-                    # Reemplazar imagen en el campo
-                    self.foto_perfil.save(
-                        f"{nombre_base}.webp", ContentFile(buffer.read()), save=False)
-                    buffer.close()
-
-                    # Guardar con la nueva imagen
-                    super().save(update_fields=["foto_perfil"])
+                    # Comprimir y sobrescribir imagen original
+                    img.save(ruta, format='JPEG', quality=80)
 
             except Exception as e:
-                print(f"Error al convertir imagen a WebP: {e}")
+                print(f"Error al procesar la imagen: {e}")
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
