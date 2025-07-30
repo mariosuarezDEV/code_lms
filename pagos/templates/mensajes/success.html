@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 
 {% block contenido %}
-<h1>¡Gracias por tu pago!</h1>
-<p>Tu transacción se ha procesado con éxito.</p>
+  <div class="row justify-content-center my-5 p-5">
+    <div class="col-12">
+      <div class="text-center">
+        <div class="">
+          <div class="mb-4">
+            <i class="fa-solid fa-receipt text-success display-1"></i>
+          </div>
+          <h2 class="display-2 my-4">¡Gracias por tu pago!</h2>
+          <p class=" text-muted fs-5 mb-4">Tu transacción se ha procesado con éxito y enviaremos los detalles a tu correo electrónico.</p>
+          <a href="{% url 'account_profile' %}" class="btn btn-dark">Ir a mi cuenta</a>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock contenido %}

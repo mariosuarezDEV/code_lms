@@ -29,7 +29,13 @@ class AccesoAnticipadoView(LoginRequiredMixin, TemplateView):
                 }
             ],
             mode="payment",
-            success_url=request.build_absolute_uri(reverse_lazy("gracias")),
+            success_url=request.build_absolute_uri(
+                reverse_lazy("gracias")
+            ) + "?session_id={CHECKOUT_SESSION_ID}",
             cancel_url=request.build_absolute_uri(reverse_lazy("error_pago")),
+            metadata={
+                "user_id": request.user.id,
+                "producto_id": oferta.id,
+            }
         )
         return redirect(session.url)  # <-- Redirige directo a Stripe
