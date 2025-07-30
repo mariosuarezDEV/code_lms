@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 import os
 from PIL import Image
+import markdown
+from django.utils.safestring import mark_safe
 from djmoney.models.fields import MoneyField
 
 
@@ -12,6 +14,13 @@ class CustomUser(AbstractUser):
 
     biografia = models.TextField(
         blank=True, null=True, verbose_name="Biografia", help_text="Escribe una biografía breve")
+
+    @property
+    def biografia_html(self):
+        return mark_safe(markdown.markdown(
+            self.biografia,
+            extensions=["markdown.extensions.tables"]
+        ))
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

@@ -2,7 +2,6 @@
 {% load static %}
 {% block contenido %}
   <div class="row my-4 align-items-center justify-content-center">
-    
     <!-- Imagen de perfil centrada y redonda -->
     <div class="col-md-4 text-center mb-4 mb-md-0">
       {% if user.foto_perfil %}
@@ -22,7 +21,6 @@
     
     <!-- Nombre del usuario -->
     <div class="col-md-6 text-center text-md-start">
-
         {% if user.first_name %}
           <h2 class="fw-bold display-2 mb-0">{{ user.first_name }}</h2>
           <h2 class="fw-light display-3 mt-0">{{ user.last_name }}</h2>
@@ -33,6 +31,23 @@
         <a href="{% url 'account_update_profile' %}" class="btn btn-outline-dark btn-sm"><i class="fa-solid fa-pen-to-square"></i> Editar perfil</a>
     </div>
   </div>
+
+  <!-- Biografía del usuario -->
+  <div class="row my-4">
+    <div class="col-12 card">
+      <div class="card-body">
+        <p class="card-text">
+          {% if user.biografia %}
+          <!-- Pasar makdown a HTML -->
+            {{ user.biografia_html }}
+          {% else %}
+            Aún no has agregado una biografía. Puedes hacerlo en la sección de edición de perfil.
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+
   <div class="row my-4 g-3">
     <h3 class="text-center col-12 my-3 display-4">Inscripciones</h3>
     <div class="col-md-6 col-12">
