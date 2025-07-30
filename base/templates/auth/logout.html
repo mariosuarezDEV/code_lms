@@ -1,11 +1,21 @@
 {% extends "base.html" %}
 
 {% block contenido %}
-  <h1>Cerrar sesión</h1>
-  <p>¿Estás seguro de que deseas cerrar sesión?</p>
-  <form method="post">
-    {% csrf_token %}
-    <button type="submit" class="btn btn-danger">Si, cerrar sesión</button>
-    <a href="{% url 'landing' %}" class="btn btn-secondary">Cancelar</a>
-  </form>
+  <div class="row justify-content-center my-5 p-5">
+    <div class="col-12">
+      <div class="text-center">
+        <div class="">
+          <div class="mb-4">
+            <i class="fa-solid fa-door-open display-1"></i>
+          </div>
+          <h2 class="display-2 my-4">¡Nos vemos pronto!</h2>
+          <p class=" text-muted fs-5 mb-4">Es bueno cerrar sesión de vez en cuando. Nos encargaremos de tener todo listo para la próxima vez.</p>
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-dark">Salir</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock contenido %}
