@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+  <div class="row justify-content-center my-5 p-5">
+    <div class="col-12">
+      <div class="text-center">
+        <div class="">
+          <div class="mb-4">
+            <i class="fa-solid fa-people-pulling display-1"></i>
+          </div>
+          <h2 class="display-2 my-4">No encontramos este lugar</h2>
+          <p class=" text-muted fs-5 mb-4">Lo sentimos, pero no pudimos encontrar la página que estabas buscando pero puedes seguir navegando por nuestro sitio.</p>
+          <a href="{% url 'landing' %}" class="btn btn-dark">Ir al inicio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock contenido %}
