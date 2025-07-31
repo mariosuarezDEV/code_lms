@@ -5,6 +5,7 @@ from django.views.generic import TemplateView, View
 from .forms import LoginForm, SignupForm
 from allauth.account.models import EmailConfirmation, EmailConfirmationHMAC
 from django.contrib import messages
+
 # Create your views here.
 
 
@@ -29,14 +30,14 @@ class AccountCreatedView(TemplateView):
             confirmation = EmailConfirmationHMAC.from_key(key)
             if confirmation:
                 confirmation.confirm(request)  # Confirmar la cuenta
-                messages.success(
-                    request, 'Tu cuenta ha sido verificada correctamente.')
+                messages.success(request, "Tu cuenta ha sido verificada correctamente.")
                 # tu template
-                return render(request, 'auth/confirmacion.html')
+                return render(request, "auth/confirmacion.html")
         except EmailConfirmation.DoesNotExist:
             messages.error(
-                request, 'El enlace de confirmación no es válido o ha expirado.')
-            return render(request, 'auth/verification.html')
+                request, "El enlace de confirmación no es válido o ha expirado."
+            )
+            return render(request, "auth/verification.html")
 
 
 class VerificationView(TemplateView):
