@@ -86,74 +86,62 @@
 </div>
 
 <!-- Proximos cursos -->
-<div class="row my-4 bg-secondary-subtle p-3">
+<div class="row my-4">
   <div class="col-12">
-    <h2 class="fw-bold mb-4">Próximos Cursos</h2>
+    <h2 class="fw-bold display-5 mb-4">Próximos Cursos</h2>
     <p class="fs-5 text-muted mb-4">Mantente actualizado con nuestros próximos cursos y talleres.</p>
   </div>
 </div>
 
-<!-- Stack de tecnologias y empresas -->
-<div class="row text-center my-5">
+<!-- Proximos cursos -->
+<div class="row my-4">
   <div class="col-12">
-    <h2 class="fw-bold mb-4">Tecnologías y Empresas Asociadas</h2>
-    <p class="fs-5 text-muted mb-4">Colaboramos con las mejores empresas y utilizamos tecnologías de vanguardia para ofrecerte una experiencia de aprendizaje excepcional.</p>
+    <h2 class="fw-bold display-5 mb-4">Biblioteca</h2>
+    <p class="fs-5 text-muted mb-4">Accede a una amplia variedad de recursos y materiales de estudio.</p>
   </div>
+</div>
 
-  <!-- Contenedor de las imágenes -->
-  <div class="col-12">
-    <div class="row justify-content-center align-items-center g-5">
-      <!-- Imagen 1 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/django-icon.svg' %}" alt="Django" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 2 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/docker-icon.svg' %}" alt="Docker" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 3 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/nginx.svg' %}" alt="Nginx" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 4 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/postgresql.svg' %}" alt="PostgreSQL" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 5 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/redis.svg' %}" alt="Redis" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 6 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/cloudflare-icon.svg' %}" alt="Cloudflare" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 7 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/stripe.svg' %}" alt="Stripe" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 8 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/letsencrypt.svg' %}" alt="Let's Encrypt" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 9 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/certbot.svg' %}" alt="Certbot" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 10 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/bootstrap.svg' %}" alt="Bootstrap" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 11 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/pandas-icon.svg' %}" alt="Jenkins" class="img-fluid mx-auto d-block" style="max-height: 80px;">
-      </div>
-      <!-- Imagen 12 -->
-      <div class="col-6 col-sm-4 col-md-3 col-lg-2">
-        <img src="{% static 'imagenes/zoom-icon.svg' %}" alt="Zoom" class="img-fluid mx-auto d-block" style="max-height: 80px;">
+<!-- Stack de tecnologías y empresas -->
+
+<div class="card-body text-center my-5">
+  <div class="card">
+    <div class="card-header">
+      <h2 class="fw-bold card-title">Tecnologías y Empresas Asociadas</h2>
+      <p class="text-muted">
+        Colaboramos con las mejores empresas y utilizamos tecnologías de vanguardia para ofrecerte una experiencia de aprendizaje excepcional.
+      </p>
+    </div>
+    <div class="card-body">
+      <div class="row justify-content-center align-items-center g-4">
+        <!-- Django -->
+        <div class="col-4 col-sm-2">
+          <img src="{% static 'imagenes/django-icon.svg' %}" alt="Django" class="img-fluid mx-auto" style="max-height:75px;">
+        </div>
+        <!-- Docker -->
+        <div class="col-4 col-sm-2">
+          <img src="{% static 'imagenes/docker-icon.svg' %}" alt="Docker" class="img-fluid mx-auto" style="max-height:75px;">
+        </div>
+        <!-- Cloudflare -->
+        <div class="col-4 col-sm-2">
+          <img src="{% static 'imagenes/cloudflare-icon.svg' %}" alt="Cloudflare" class="img-fluid mx-auto" style="max-height:75px;">
+        </div>
+        <!-- Nginx -->
+        <div class="col-4 col-sm-2">
+          <img src="{% static 'imagenes/nginx.svg' %}" alt="Nginx" class="img-fluid mx-auto" style="max-height:75px;">
+        </div>
+        <!-- Redis -->
+        <div class="col-4 col-sm-2">
+          <img src="{% static 'imagenes/redis.svg' %}" alt="Redis" class="img-fluid mx-auto" style="max-height:75px;">
+        </div>
+        <!-- Stripe -->
+        <div class="col-4 col-sm-2">
+          <img src="{% static 'imagenes/stripe.svg' %}" alt="stripe" class="img-fluid mx-auto" style="max-height:75px;">
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- Sponsor -->
 <div class="row my-4">
