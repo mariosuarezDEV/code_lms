@@ -21,5 +21,61 @@
         
         {% endblock contenido %}
     </div>
+    <footer class="bg-dark text-light pt-5 pb-3 mt-5">
+  <div class="container">
+    <div class="row">
+      
+      <!-- Sobre Lumace -->
+      <div class="col-md-3 mb-4">
+        <h5 class="fw-bold">Lumace</h5>
+        <p class="small">
+          <!-- Breve descripción de la plataforma -->
+          <!-- Ejemplo: Plataforma de educación en línea centrada en el aprendizaje práctico y accesible. -->
+        </p>
+      </div>
+
+      <!-- Enlaces útiles -->
+      <div class="col-md-3 mb-4">
+        <h6 class="fw-bold">Enlaces</h6>
+        <ul class="list-unstyled small">
+          <li><a href="{% url 'landing' %}" class="text-light text-decoration-none">Inicio</a></li>
+          <li><a href="{% url 'curso_lista' %}" class="text-light text-decoration-none">Cursos</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Inscripciones</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="col-md-3 mb-4">
+        <h6 class="fw-bold">Legal</h6>
+        <ul class="list-unstyled small">
+          <li><a href="#" class="text-light text-decoration-none">Aviso de Privacidad</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Términos y Condiciones</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Política de Cookies</a></li>
+          <li><a href="#" class="text-light text-decoration-none">Regulaciones de Telecomunicaciones</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto -->
+      <div class="col-md-3 mb-4">
+        <h6 class="fw-bold">Contacto</h6>
+        <ul class="list-unstyled small">
+          <li><i class="fa-solid fa-envelope me-2"></i> contacto@lumace.com</li>
+          <li><i class="fa-solid fa-phone me-2"></i> +52 228 257 860</li>
+          <li><i class="fa-solid fa-map-marker-alt me-2"></i> Veracruz, MX</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <hr class="border-secondary">
+
+    <div class="row">
+      <div class="col text-center small">
+        <p class="mb-0">&copy; {{ now|date:"Y" }} Lumace. Todos los derechos reservados. Plataforma LMS desarrollada con estándares legales de privacidad y telecomunicaciones.</p>
+      </div>
+    </div>
+  </div>
+</footer>
 </body>
 </html>
