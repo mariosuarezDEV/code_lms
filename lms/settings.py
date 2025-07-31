@@ -14,6 +14,7 @@ from django.contrib.messages import constants as messages
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv()
 
@@ -28,9 +29,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-!j=m1$8(&s*ud30$x*5gw75malqymx9=!q1d@f6-1c&u!-!d%)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -45,10 +46,10 @@ INSTALLED_APPS = [
     # Apps de terceros
     "django_bootstrap5",
     "djmoney",
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
     "crispy_forms",
     "crispy_bootstrap5",
     "djstripe",
@@ -63,7 +64,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -87,7 +88,7 @@ TEMPLATES = [
             "context_processors": [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
-                'django.template.context_processors.request',
+                "django.template.context_processors.request",
             ],
         },
     },
@@ -98,12 +99,10 @@ WSGI_APPLICATION = "lms.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        default=os.getenv("POSTGRESQL"),
+    )
 }
 
 
@@ -125,7 +124,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'personal.CustomUser'
+AUTH_USER_MODEL = "personal.CustomUser"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
@@ -142,18 +141,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Carpetas donde Django buscará archivos estáticos en desarrollo
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),  # Aquí pondrás tus archivos estáticos
+    os.path.join(BASE_DIR, "static"),  # Aquí pondrás tus archivos estáticos
 ]
 
 # (Opcional) Habilita compresión y versión de archivos
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -162,21 +161,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # AllAuth
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend'
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 # Registro con Email
-ACCOUNT_LOGIN_METHODS = ['email']
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+ACCOUNT_LOGIN_METHODS = ["email"]
+ACCOUNT_SIGNUP_FIELDS = ["email*", "password1*", "password2*"]
 
-ACCOUNT_FORMS = {'login': 'base.forms.LoginForm',
-                 'signup': 'base.forms.SignupForm'}
+ACCOUNT_FORMS = {"login": "base.forms.LoginForm", "signup": "base.forms.SignupForm"}
 
-LOGIN_REDIRECT_URL = 'landing'
-LOGOUT_REDIRECT_URL = 'landing'
-LOGIN_URL = 'account_login'
-ACCOUNT_SIGNUP_URL = 'account_signup'
+LOGIN_REDIRECT_URL = "landing"
+LOGOUT_REDIRECT_URL = "landing"
+LOGIN_URL = "account_login"
+ACCOUNT_SIGNUP_URL = "account_signup"
 
 # Envio de correos electronicos
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"  # "mandatory" or "optional" or "none"
@@ -184,22 +182,22 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECTS = True
 ACCOUNT_EMAIL_CONFIRMATION_REDIRECT_URL = "landing"
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 3
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'lmcervantessuarez@gmail.com'
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
 # Asegúrate de definir esta variable en tu .env
-EMAIL_HOST_PASSWORD = 'zjsn tvah gruo cpmd'
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # Configuracion de mensajes
 
 MESSAGE_TAGS = {
-    messages.DEBUG: 'secondary',
-    messages.INFO: 'info',
-    messages.SUCCESS: 'success',
-    messages.WARNING: 'warning',
-    messages.ERROR: 'danger',
+    messages.DEBUG: "secondary",
+    messages.INFO: "info",
+    messages.SUCCESS: "success",
+    messages.WARNING: "warning",
+    messages.ERROR: "danger",
 }
 
 
@@ -211,5 +209,10 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Stripe settings
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
 STRIPE_LIVE_MODE = True  # Cambiar a True en producción
-STRIPE_SECRET_KEY = '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'
+STRIPE_SECRET_KEY = os.getenv("STRIPE_LIVE_SECRET_KEY")
 DJSTRIPE_USE_NATIVE_JSONFIELD = True  # Recomendado para mejores modelos
+
+
+# Celery settings
+# settings.py
+CELERY_BROKER_URL = "redis://redis:6379/0"

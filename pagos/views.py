@@ -3,6 +3,8 @@ from django.views.generic import TemplateView
 import stripe
 from personal.models import HistorialPagos
 from ofertas.models import OfertaModel
+from .task import recibo_compra
+from datetime import datetime
 # Create your views here.
 
 
@@ -29,6 +31,14 @@ class GraciasPorTuPago(TemplateView):
                 folio=datos_pago.id,
                 monto=datos_pago.amount_received / 100,  # Convertir a pesos
                 estado_stripe=datos_pago.status
+            )
+            # Enviar el recibo de compra
+            recibo_compra.delay(
+                self.request.user.username,
+                datetime.now(),
+                oferta.descripcion,
+                datos_pago.amount_received / 100,  # Convertir a pesos
+                self.request.user.email
             )
         return context
 

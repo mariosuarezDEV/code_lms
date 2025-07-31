@@ -1,6 +1,20 @@
 {% extends "base.html" %}
 
 {% block contenido %}
-<h1>¡Error en el pago!</h1>
-<p>Tu transacción no se ha podido procesar. Por favor, intenta nuevamente.</p>
+<div class="row justify-content-center my-5 p-5">
+    <div class="col-12">
+        <div class="text-center">
+            <div class="">
+                <div class="mb-4">
+                    <i class="fa-solid fa-circle-exclamation text-danger display-1"></i>
+                </div>
+                <h2 class="display-2 my-4">¡Parece que tu compra no se completo!</h2>
+                <p class=" text-muted fs-5 mb-4">Asegúrate de que tu método de pago esté actualizado y tenga fondos
+                    suficientes.
+                </p>
+                <a href="{% url 'account_profile' %}" class="btn btn-dark">Ir a mi cuenta</a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock contenido %}

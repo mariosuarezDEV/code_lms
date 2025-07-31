@@ -6,3 +6,5 @@ Hacer el migrate
 - Poner la oferta de acceso anticipado
 
 Ejecutar el djstripe comando
+
+- celery -A lms worker --loglevel=info
