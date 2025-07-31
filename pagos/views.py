@@ -5,6 +5,7 @@ from personal.models import HistorialPagos
 from ofertas.models import OfertaModel
 from .task import recibo_compra
 from datetime import datetime
+
 # Create your views here.
 
 
@@ -30,7 +31,7 @@ class GraciasPorTuPago(TemplateView):
                 usuario=self.request.user,
                 folio=datos_pago.id,
                 monto=datos_pago.amount_received / 100,  # Convertir a pesos
-                estado_stripe=datos_pago.status
+                estado_stripe=datos_pago.status,
             )
             # Enviar el recibo de compra
             recibo_compra.delay(
@@ -38,7 +39,7 @@ class GraciasPorTuPago(TemplateView):
                 datetime.now(),
                 oferta.descripcion,
                 datos_pago.amount_received / 100,  # Convertir a pesos
-                self.request.user.email
+                self.request.user.email,
             )
         return context
 

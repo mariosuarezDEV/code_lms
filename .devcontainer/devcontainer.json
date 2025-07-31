@@ -18,7 +18,33 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip install -r dependencias.txt"
+	"postCreateCommand": "pip install -r dependencias.txt",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"njpwerner.autodocstring",
+				"hossaini.bootstrap-intellisense",
+				"ReprEng.csv",
+				"batisteo.vscode-django",
+				"almahdi.code-django",
+				"junstyle.vscode-django-support",
+				"kisstkondoros.vscode-gutter-preview",
+				"oderwat.indent-rainbow",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"ms-python.debugpy",
+				"ms-python.vscode-python-envs",
+				"mechatroner.rainbow-csv",
+				"HansUXdev.bootstrap5-snippets",
+				"thebarkman.vscode-djaneiro",
+				"bigonesystems.django",
+				"bibhasdn.django-html",
+				"usernamehw.errorlens",
+				"WaseemAkram.jinja-snippets-flask",
+				"KevinRose.vsc-python-indent"
+			]
+		}
+	}
 	// Configure tool-specific properties.
 	// "customizations": {},
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
