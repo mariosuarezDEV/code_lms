@@ -217,3 +217,6 @@ DJSTRIPE_USE_NATIVE_JSONFIELD = True  # Recomendado para mejores modelos
 # Celery settings
 # settings.py
 CELERY_BROKER_URL = "redis://redis:6379/0"
+# Aceptar el CSRF
+
+CSRF_TRUSTED_ORIGINS = ["https://lms.lumace.cloud"]
