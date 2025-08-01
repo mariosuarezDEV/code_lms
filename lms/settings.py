@@ -29,7 +29,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-!j=m1$8(&s*ud30$x*5gw75malqymx9=!q1d@f6-1c&u!-!d%)"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
@@ -211,11 +211,11 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 # Stripe settings
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
-STRIPE_LIVE_MODE = False  # Cambiar a True en producción
-# STRIPE_LIVE_SECRET_KEY = os.getenv("STRIPE_LIVE_SECRET_KEY")
+STRIPE_LIVE_MODE = True  # Cambiar a True en producción
+STRIPE_LIVE_SECRET_KEY = os.getenv("STRIPE_LIVE_SECRET_KEY")
 DJSTRIPE_USE_NATIVE_JSONFIELD = True  # Recomendado para mejores modelos
 
-STRIPE_LIVE_SECRET_KEY = "sk_test_51RplSpBH06NLA6g9jK9clIrH8Wp458ZeFg6Qp1ra42NCuaF1N7AHshlzCaa9st28kvUAGTlqirabR1uAG2UvL0DW002XvQWdEz"
+# STRIPE_LIVE_SECRET_KEY = "sk_test_51RplSpBH06NLA6g9jK9clIrH8Wp458ZeFg6Qp1ra42NCuaF1N7AHshlzCaa9st28kvUAGTlqirabR1uAG2UvL0DW002XvQWdEz"
 # STRIPE_TEST_SECRET_KEY = "pk_live_51RplSpBH06NLA6g9TDtbtYJoeSr30ndUANrkIIXPySUWO00VyOKpFXxOEPrytf3weqPN0ZcYShpQNhNp82RUxOAi00WVZTj1gU"
 # STRIPE_LIVE_SECRET_KEY
 
