@@ -6,9 +6,11 @@ from .forms import CustomUserForm
 from .models import CustomUser
 
 # Modelos para nuestro perfil
-from .models import HistorialPagos
+from pagos.models import HistorialPagos
+
 # Modelos para nuestro perfil
 from cursos.models import AlumnosInscritosModel
+
 # Create your views here.
 
 
@@ -17,10 +19,10 @@ class ProfileView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['cursos'] = AlumnosInscritosModel.objects.filter(
-            alumno=self.request.user)
-        context['pagos'] = HistorialPagos.objects.filter(
-            usuario=self.request.user)
+        context["cursos"] = AlumnosInscritosModel.objects.filter(
+            alumno=self.request.user
+        )
+        context["pagos"] = HistorialPagos.objects.filter(usuario=self.request.user)
         return context
 
 
@@ -33,7 +35,7 @@ class UpdateProfileView(LoginRequiredMixin, UpdateView):
         return self.request.user
 
     def get_success_url(self):
-        return reverse_lazy('account_profile')
+        return reverse_lazy("account_profile")
 
     def form_valid(self, form):
         # Esto se encarga automáticamente de manejar request.FILES

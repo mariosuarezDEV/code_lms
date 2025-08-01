@@ -1,12 +1,55 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 import stripe
-from personal.models import HistorialPagos
-from ofertas.models import OfertaModel
+from django.conf import settings
+
+# Modelos para obtener datos
+from ofertas.models import OfertaCosteoModel
+from costos.models import CostosModel
+
 from .task import recibo_compra
 from datetime import datetime
 
-# Create your views here.
+stripe.api_key = settings.STRIPE_LIVE_SECRET_KEY
+
+
+# Pagar curso
+# Pagar clase
+# Pagar libro
+# Pagar membresía
+# Pagar sponsors
+# Pagar ofertas
+class AccesoAnticipadoView(LoginRequiredMixin, TemplateView):
+    def get(self, request, *args, **kwargs):
+        oferta_id = kwargs.get("id")
+        oferta = OfertaCosteoModel.objects.get(id=oferta_id)
+
+        session = stripe.checkout.Session.create(
+            payment_method_types=["card"],
+            line_items=[
+                {
+                    "price_data": {
+                        "currency": "mxn",
+                        "unit_amount": int(oferta.costo.precio.amount * 100),
+                        "product_data": {
+                            "name": oferta.costo.titulo,
+                        },
+                    },
+                    "quantity": 1,
+                }
+            ],
+            mode="payment",
+            success_url=request.build_absolute_uri(reverse_lazy("gracias"))
+            + "?session_id={CHECKOUT_SESSION_ID}",
+            cancel_url=request.build_absolute_uri(reverse_lazy("error_pago")),
+            metadata={
+                "user_id": request.user.id,
+                "producto_id": oferta.id,
+            },
+        )
+        return redirect(session.url)  # <-- Redirige directo a Stripe
 
 
 class GraciasPorTuPago(TemplateView):

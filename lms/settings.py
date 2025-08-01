@@ -212,9 +212,12 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Stripe settings
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = "id"
 STRIPE_LIVE_MODE = True  # Cambiar a True en producción
-STRIPE_SECRET_KEY = os.getenv("STRIPE_LIVE_SECRET_KEY")
+STRIPE_LIVE_SECRET_KEY = os.getenv("STRIPE_LIVE_SECRET_KEY")
 DJSTRIPE_USE_NATIVE_JSONFIELD = True  # Recomendado para mejores modelos
 
+
+# STRIPE_TEST_SECRET_KEY
+# STRIPE_LIVE_SECRET_KEY
 
 # Celery settings
 # settings.py

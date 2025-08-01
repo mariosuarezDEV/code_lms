@@ -57,6 +57,8 @@ services:
         "--reload",
         "--workers",
         "2",
+        "--lifespan",
+        "off",
       ]
     volumes:
       - .:/app
