@@ -89,7 +89,67 @@
 <div class="row my-4">
   <div class="col-12">
     <h2 class="fw-bold display-5 mb-4">Próximos Cursos</h2>
-    <p class="fs-5 text-muted mb-4">Mantente actualizado con nuestros próximos cursos y talleres.</p>
+  </div>
+  <div class="col-12">
+    <div id="carouselCartas" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Primer slide -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center gap-3">
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'imagenes/intro_info.jpg' %}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Introducción a la Informática</h5>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'imagenes/intro_programacion.jpg' %}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Introducción a la Programación</h5>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'imagenes/intro_python.jpg' %}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Python para Principiantes</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Segundo slide -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center gap-3">
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'imagenes/flask_intro.jpg' %}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Introducción a Flask con Inteligencia Artificial</h5>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'imagenes/rest_api.jpg' %}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">REST API para Principiantes</h5>
+              </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+              <img src="{% static 'imagenes/backend_principiantes.jpg' %}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Desarrollo backend para Principiantes</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controles -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselCartas" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" style="filter: invert(1);"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselCartas" data-bs-slide="next">
+        <span class="carousel-control-next-icon" style="filter: invert(1);"></span>
+      </button>
+    </div>
+
   </div>
 </div>
 
@@ -97,7 +157,7 @@
 <div class="row my-4">
   <div class="col-12">
     <h2 class="fw-bold display-5 mb-4">Biblioteca</h2>
-    <p class="fs-5 text-muted mb-4">Accede a una amplia variedad de recursos y materiales de estudio.</p>
+    <p class="fs-5 text-muted mb-4">Proximamente.</p>
   </div>
 </div>
 
