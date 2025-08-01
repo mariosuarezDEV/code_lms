@@ -6,8 +6,12 @@ from .models import CostosModel
 
 @admin.register(CostosModel)
 class CostosAdmin(admin.ModelAdmin):
-    list_display = ("id", "precio", "fecha_creacion")
-    search_fields = ("precio",)
+    list_display = ("id", "titulo", "descripcion", "precio", "fecha_creacion")
+    search_fields = (
+        "titulo",
+        "descripcion",
+        "precio",
+    )
     readonly_fields = (
         "fecha_creacion",
         "fecha_modificacion",

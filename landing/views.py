@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView
 from cursos.models import CursosModel
 from django.shortcuts import redirect
+from ofertas.models import OfertaCosteoModel
 
 
 class LandingPageView(TemplateView):
@@ -14,3 +15,8 @@ class LandingPageView(TemplateView):
 
 class PresalePageView(TemplateView):
     template_name = "lanzamiento.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["costo"] = OfertaCosteoModel.objects.first()
+        return context

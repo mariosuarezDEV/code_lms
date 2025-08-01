@@ -3,7 +3,7 @@
 {% block contenido %}
   <div class="row my-4 align-items-center justify-content-center">
     <!-- Imagen de perfil centrada y redonda -->
-    <div class="col-md-4 text-center mb-4 mb-md-0">
+    <div class="col-lg-4 col-12 text-center mb-4 mb-md-0">
       {% if user.foto_perfil %}
         <img src="{{ user.foto_perfil.url }}" 
               class="img-fluid rounded" 
@@ -20,7 +20,7 @@
     </div>
     
     <!-- Nombre del usuario -->
-    <div class="col-md-6 text-center text-md-start">
+    <div class="col-lg-8 col-12 text-center text-lg-start">
         {% if user.first_name %}
           <h2 class="fw-bold display-2 mb-0">{{ user.first_name }}</h2>
           <h2 class="fw-light display-3 mt-0">{{ user.last_name }}</h2>
