@@ -8,7 +8,7 @@
             Cursos prácticos y actuales para que desarrolles nuevas habilidades desde cualquier lugar. Sin
             distracciones, sin complicaciones.
         </p>
-        <div class="d-flex justify-content-center gap-3">
+        <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
             <a href="#" class="btn btn-dark px-4">
                 <i class="fa-solid fa-folder-tree me-2"></i> Explorar cursos
             </a>
@@ -95,20 +95,20 @@
       <div class="carousel-inner">
         <!-- Primer slide -->
         <div class="carousel-item active">
-          <div class="d-flex justify-content-center gap-3">
-            <div class="card" style="width: 18rem;">
+          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+            <div class="card">
               <img src="{% static 'imagenes/intro_info.jpg' %}" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Introducción a la Informática</h5>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
               <img src="{% static 'imagenes/intro_programacion.jpg' %}" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Introducción a la Programación</h5>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
               <img src="{% static 'imagenes/intro_python.jpg' %}" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">Python para Principiantes</h5>
@@ -118,23 +118,23 @@
         </div>
         <!-- Segundo slide -->
         <div class="carousel-item">
-          <div class="d-flex justify-content-center gap-3">
-            <div class="card" style="width: 18rem;">
+          <div class="d-flex flex-column flex-md-row justify-content-center gap-3">
+            <div class="card">
               <img src="{% static 'imagenes/flask_intro.jpg' %}" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">Introducción a Flask con Inteligencia Artificial</h5>
+                <h5 class="card-title">Introducción a Flask para IA</h5>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
               <img src="{% static 'imagenes/rest_api.jpg' %}" class="card-img-top">
               <div class="card-body">
                 <h5 class="card-title">REST API para Principiantes</h5>
               </div>
             </div>
-            <div class="card" style="width: 18rem;">
+            <div class="card">
               <img src="{% static 'imagenes/backend_principiantes.jpg' %}" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">Desarrollo backend para Principiantes</h5>
+                <h5 class="card-title">Introducción al Backend</h5>
               </div>
             </div>
           </div>
@@ -143,10 +143,10 @@
 
       <!-- Controles -->
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselCartas" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" style="filter: invert(1);"></span>
+        <span class="carousel-control-prev-icon"></span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#carouselCartas" data-bs-slide="next">
-        <span class="carousel-control-next-icon" style="filter: invert(1);"></span>
+        <span class="carousel-control-next-icon"></span>
       </button>
     </div>
 
