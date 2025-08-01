@@ -62,6 +62,8 @@ INSTALLED_APPS = [
     "clases",
     "pagos",
     "biblioteca",
+    "sponsors",
+    "costos",
 ]
 
 MIDDLEWARE = [
