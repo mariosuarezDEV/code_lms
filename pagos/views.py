@@ -87,7 +87,7 @@ class AccesoAnticipadoView(LoginRequiredMixin, TemplateView):
         return redirect(session.url)  # <-- Redirige directo a Stripe
 
 
-class GraciasPorTuPago(TemplateView):
+class GraciasPorTuPago(LoginRequiredMixin, TemplateView):
     template_name = "mensajes/success.html"
 
     def get_context_data(self, **kwargs):
@@ -132,5 +132,5 @@ class GraciasPorTuPago(TemplateView):
         return context
 
 
-class ErrorEnElPago(TemplateView):
+class ErrorEnElPago(LoginRequiredMixin, TemplateView):
     template_name = "mensajes/error.html"
