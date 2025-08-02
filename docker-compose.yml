@@ -107,8 +107,20 @@ services:
     networks:
       - lms_network
     restart: always
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: lms_portainer
+    restart: always
+    ports:
+      - "9000:9000"
+    volumes:
+      - portainer_data:/data
+    networks:
+      - lms_network
+
 volumes:
   db_data:
+  portainer_data:
 networks:
   lms_network:
     driver: bridge
